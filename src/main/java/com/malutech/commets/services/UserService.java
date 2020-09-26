@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.malutech.commets.domain.User;
+import com.malutech.commets.dto.UserDTO;
 import com.malutech.commets.repository.UserRepository;
 import com.malutech.commets.services.exception.ObjectNotFoundException;
 
@@ -22,6 +23,14 @@ public class UserService {
 	public User findById(String id) {
 		java.util.Optional<User> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+	}
+	
+	public User issert(User obj) {
+		return repository.insert(obj);
+	}
+	
+	public User fromDTO(UserDTO objDTO) {
+		return new User(objDTO.getId(),objDTO.getName(),objDTO.getEmail());
 	}
 
 }
