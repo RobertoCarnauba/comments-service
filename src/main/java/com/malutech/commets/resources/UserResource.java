@@ -64,7 +64,7 @@ public class UserResource {
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
-	
+	//Recupera a lista de poste de um usuario
 	@GetMapping(value = "/{id}/posts")
 	public ResponseEntity<List<Post>> findPost(@PathVariable String id){
 		User user = service.findById(id);
