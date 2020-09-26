@@ -23,9 +23,10 @@ public class Instantiation implements CommandLineRunner {
 		User maria = new User(null, "Maria Brown", "maria@gmail.com");
 		User alex = new User(null, "Alex Green", "alex@gmail.com");
 		User bob = new User(null, "Bob Grey", "bob@gmail.com");
+		User beto = new User(null, "Roberto Carnaúba Dias", "betorobertodias@gmail.com");
 		
 		
-		repo.saveAll(Arrays.asList(maria,alex, bob));
+		repo.saveAll(Arrays.asList(maria,alex, bob, beto));
 		
 		
 	}

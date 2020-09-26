@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.malutech.commets.domain.User;
 import com.malutech.commets.repository.UserRepository;
+import com.malutech.commets.services.exception.ObjectNotFoundException;
 
 @Service
 public class UserService {
@@ -16,6 +17,11 @@ public class UserService {
 	
 	public List<User> findAll(){
 		return repository.findAll();
+	}
+	
+	public User findById(String id) {
+		java.util.Optional<User> obj = repository.findById(id);
+		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
 
 }
