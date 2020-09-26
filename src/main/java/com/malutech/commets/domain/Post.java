@@ -1,31 +1,34 @@
 package com.malutech.commets.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "user")
-public class User implements Serializable {
+import com.malutech.commets.dto.AuthorDTO;
+
+@Document
+public class Post implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	private String id;
-	private  String name;
-	private String email;
+	private Date date;
+	private String title;
+	private String body;
+	private AuthorDTO author;
 	
-	private List<Post> posts = new ArrayList<>();
-	
-	public User() {
+	public Post() {
 	}
 
-	public User(String id, String name, String email) {
+	public Post(String id, Date date, String title, String body, AuthorDTO author) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.email = email;
+		this.date = date;
+		this.title = title;
+		this.body = body;
+		this.author = author;
 	}
 
 	public String getId() {
@@ -36,27 +39,36 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	public List<Post> getPosts() {
-		return posts;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
+	public String getBody() {
+		return body;
+	}
+
+	public void setBody(String body) {
+		this.body = body;
+	}
+	
+	public AuthorDTO getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(AuthorDTO author) {
+		this.author = author;
 	}
 
 	@Override
@@ -75,7 +87,7 @@ public class User implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		Post other = (Post) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -85,5 +97,5 @@ public class User implements Serializable {
 	}
 
 
-	
+
 }
