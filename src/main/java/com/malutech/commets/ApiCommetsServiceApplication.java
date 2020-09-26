@@ -1,4 +1,4 @@
-package com.malutech.commetsservice;
+package com.malutech.commets;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
